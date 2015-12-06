@@ -1,0 +1,24 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    http_port: 3000
+    git_repo: https://github.com/sayden/simplest-express-server.git
+    dest_dir: /srv/node-server
+    server_file: server.js
+  tasks:
+    - name: Check if http_port is open
+      firewalld: port={{ http_port }}/tcp
+                 state=enabled
+                 immediate=yes
+                 permanent=yes
+
+    - name: Clone Git repo
+      git: clone=yes repo={{ git_repo }} dest={{ dest_dir }}
+
+    - name: Install dependencies
+      shell: npm install chdir={{ dest_dir }}
+
+    - name: Launch Server
+      shell: pm2 start {{ server_file }} -i 0 --watch
+             chdir={{ dest_dir }}
