@@ -5,35 +5,10 @@
     http_port: 3000
     git_repo: https://github.com/sayden/simplest-express-server.git
     dest_dir: /srv/node-server
+    server_file: server.js
   tasks:
-    - name: Check if http_port is open
-      firewalld: port={{ http_port }}/tcp
-                 state=enabled
-                 immediate=yes
-                 permanent=yes
-
-    - name: Get Node PID proccess if exists
-      shell: ps axf | grep node | grep -v grep | awk '{print $1}'
-      register: result
-
-    - name: Node PID if available
-      debug: msg="Node PID {{ result.stdout }}"
-
-    - name: Kill node process
-      shell: "kill -9 {{ result.stdout }}"
-      ignore_errors: true
-
-    - name: Delete previous server
-      file: path={{ dest_dir }} state=absent
-
-    - name: Clone Git repo
+    - name: Pulls Git
       git: clone=yes repo={{ git_repo }} dest={{ dest_dir }}
 
     - name: Install dependencies
       shell: npm install chdir={{ dest_dir }}
-
-    - name: Launch Server again
-      shell: npm start &
-             chdir={{ dest_dir }}
-      async: 45
-      poll: 0
