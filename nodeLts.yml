@@ -14,5 +14,8 @@
     - name: Install Node LTS
       shell: n 4.2.3
 
+    - name: Install pm2
+      npm: name=pm2 state=present global=yes
+
     - name: Install Git
       yum: name=git state=present
