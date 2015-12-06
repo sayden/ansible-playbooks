@@ -8,7 +8,7 @@
     - name: Install npm
       yum: name=npm state=present
 
-    - name: Install Node LTS
+    - name: Install N
       npm: name=n state=present global=yes
 
     - name: Install Node LTS
