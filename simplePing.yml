@@ -1,4 +1,5 @@
-- hosts: all
+- hosts: local
+  remote_user: osboxes
   tasks:
     - name: Ping all
       ping:

@@ -1,0 +1,15 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install Node
+      yum: name=nodejs state=present
+
+    - name: Install npm
+      yum: name=npm state=present
+
+    - name: Install Node LTS
+      npm: name=n state=present global=yes
+
+    - name: Install Node LTS
+      shell: n 4.2.3

@@ -1,0 +1,7 @@
+- hosts: all
+  remote_user: osboxes
+  tasks:
+    - name: Add EPEL repo
+      shell: wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm ; rpm -ivh -v epel-release-7-5.noarch.rpm
+      become: yes
+      become_method: sudo
