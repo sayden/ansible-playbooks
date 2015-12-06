@@ -10,12 +10,16 @@ Adds EPEL repo to any Red Hat based distribution
 * Install node project dependencies
 * Launches PM2 server using maximum cores and **automatic restart on file change**
 
+`ansible-playbook --user=osboxes --ask-sudo-pass -i hosts -v deployNode.yml`
+
 ### redeployNode.yml
 Redeploys a Node server based on the previous script, basically:
 * Pulls git
 * Install npm dependencies
 
 As we turned on --watch on PM2, the server should restart automatically
+
+`ansible-playbook --user=osboxes --ask-sudo-pass -i hosts -v redeployNode.yml`
 
 ### gain-ssh-access
 Simple script to remember how to install a ssh public key in some host and gain password-less access
@@ -31,3 +35,6 @@ Installs minimum required packages for a Node server
 
 ### simplePing.yml
 The first ansible script to get familiar with ansible syntax.
+
+### hosts
+A handy hosts file

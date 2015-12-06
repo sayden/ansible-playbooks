@@ -1,6 +1,8 @@
 #!/bin/bash
 
-if [ $1 = "-i" ] ; then
+echo -e "\n"
+
+if [ "$1" = "-i" ] ; then
   echo "Using interactive mode"
 
   echo -e "Write the name of the remote user: \c"
@@ -14,6 +16,9 @@ if [ $1 = "-i" ] ; then
 
   ssh-copy-id -i ~/.ssh/id_rsa.pub $user@$host
 else
-  echo "Use ssh-copy-id command. example:"
+  echo "You can use interactive mode with -i flag"
+  echo "Use ssh-copy-id command if not. example:"
   echo "ssh-copy-id -i ~/.ssh/id_rsa.pub user@host"
 fi
+
+echo -e "\n"
