@@ -13,3 +13,6 @@
 
     - name: Install Node LTS
       shell: n 4.2.3
+
+    - name: Install Git
+      yum: name=git state=present
