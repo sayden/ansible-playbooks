@@ -2,14 +2,18 @@
   become: yes
   become_method: sudo
   vars:
+    # For handlers/restart-docker.yml
     http_port: 3000
     host_port: 41600
+
+    # Shared here and in handlers/restart-docker.yml
+    image_name: sayden/node-server
+    
     git_repo: https://github.com/sayden/simplest-express-server.git
     docker_dest_dir: /srv/docker
-    image_name: sayden/node-server
   tasks:
 
-    - name: Re build Docker image
+    - name: Re/build Docker image
       docker_image: name={{ image_name }}
                     path={{ docker_dest_dir }}
                     nocache=yes
@@ -18,7 +22,3 @@
 
   handlers:
     - include: handlers/restart-docker.yml
-      vars:
-          http_port: {{ http_port }}
-          host_port: {{ host_port }}
-          image_name: {{ image_name }}
