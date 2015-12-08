@@ -2,10 +2,8 @@
   become: yes
   become_method: sudo
   vars:
-    http_port: 3000
     git_repo: https://github.com/sayden/simplest-express-server.git
     dest_dir: /srv/node-server
-    server_file: server.js
   tasks:
     - name: Pulls Git
       git: clone=yes repo={{ git_repo }} dest={{ dest_dir }}

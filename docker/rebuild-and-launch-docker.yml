@@ -1,0 +1,24 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    http_port: 3000
+    host_port: 41600
+    git_repo: https://github.com/sayden/simplest-express-server.git
+    docker_dest_dir: /srv/docker
+    image_name: sayden/node-server
+  tasks:
+
+    - name: Re build Docker image
+      docker_image: name={{ image_name }}
+                    path={{ docker_dest_dir }}
+                    nocache=yes
+                    state=build
+      notify: Restart Docker image
+
+  handlers:
+    - include: handlers/restart-docker.yml
+      vars:
+          http_port: {{ http_port }}
+          host_port: {{ host_port }}
+          image_name: {{ image_name }}

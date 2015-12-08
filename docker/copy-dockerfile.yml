@@ -1,0 +1,9 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    docker_dest_dir: /srv/docker
+    source_dockerfile_dir: /home/mariocaster/tmp/docker-cookbook/centos-node/Dockerfile
+  tasks:
+    - name: Copy Dockerfile to server
+      copy: dest={{ docker_dest_dir }} src={{ source_dockerfile_dir }}

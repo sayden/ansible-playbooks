@@ -1,0 +1,11 @@
+- name: Add Docker
+  yum: name=docker state=present
+
+- name: Add python-docker-py
+  yum: name=python-docker-py state=present
+
+- name: Docker service must be started
+  service: name=docker state=started
+
+- name: Pull Docker Centos base image
+  docker: pull=missing image={{ base_image }}

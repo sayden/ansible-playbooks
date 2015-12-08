@@ -2,6 +2,8 @@
   become: yes
   become_method: sudo
   tasks:
+    - include: common/tasks/addEpelRepo.yml
+    
     - name: Install Node
       yum: name=nodejs state=present
 

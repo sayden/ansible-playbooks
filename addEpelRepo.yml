@@ -1,5 +1,0 @@
-- hosts: all
-  remote_user: osboxes
-  tasks:
-    - name: Add EPEL repo
-      yum: name=epel-release state=present

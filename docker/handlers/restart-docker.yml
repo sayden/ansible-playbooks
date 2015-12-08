@@ -1,0 +1,2 @@
+- name: Restart Docker image
+  docker: name=node ports={{ host_port }}:{{ http_port }} image={{ image_name }} state=reloaded
