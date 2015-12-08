@@ -212,8 +212,6 @@ ansible-playbook -vvvv ${ANSIBLE_PLAYBOOKS}/rebuildDocker.yml -i ${ANSIBLE_PLAYB
 
 Notes about this last part: I don't enter too deep into Jenkins configuration because, as I said at the beginning of the article, users that are trying to achieve Continous Delivery in their project must have some background knowledge in advance about some tools as this is not a "tutorial" about a tool but more like a "full solution" using various tools available (not necessarly the best).
 
------
-
 ansible-playbooks
 ===
 

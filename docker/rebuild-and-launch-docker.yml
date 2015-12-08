@@ -8,10 +8,14 @@
 
     # Shared here and in handlers/restart-docker.yml
     image_name: sayden/node-server
-    
-    git_repo: https://github.com/sayden/simplest-express-server.git
+
+    # Dockerfile to use and destination in target's machine
+    source_dockerfile_dir: /home/mariocaster/tmp/docker-cookbook/centos-node/Dockerfile
     docker_dest_dir: /srv/docker
+
+    git_repo: https://github.com/sayden/simplest-express-server.git
   tasks:
+    - include: tasks/copy-dockerfile.yml
 
     - name: Re/build Docker image
       docker_image: name={{ image_name }}

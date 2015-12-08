@@ -1,0 +1,2 @@
+- name: Copy Dockerfile to server
+  copy: dest={{ docker_dest_dir }} src={{ source_dockerfile_dir }}
