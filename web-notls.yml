@@ -1,0 +1,25 @@
+#!/usr/bin/env ansible-playbook
+- name: Configure webserver with nginx
+  hosts: testserver
+  sudo: True
+  tasks:
+    - name: install nginx
+      apt: name=nginx update_cache=yes
+
+    - name: copy nginx config file
+      copy: src=files/nginx.conf dest=/etc/nginx/sites-available/default
+
+    - name: enable configuration
+      file: >
+        dest=/etc/nginx/sites-enabled/default
+        src=/etc/nginx/sites-available/default
+        state=link
+
+    - name: Make sure path for destination index file exists
+      file: path=/usr/share/nginx/html state=directory
+
+    - name: copy index.html
+      template: src=templates/index.html dest=/usr/share/nginx/html/index.html
+
+    - name: restart nginx
+      service: name=nginx state=restarted

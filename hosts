@@ -1,2 +1,2 @@
-[local]
-192.168.1.39      ansible_sudo_pass=osboxes.org    ansible_ssh_user=osboxes
+[testserver]
+192.168.33.10
