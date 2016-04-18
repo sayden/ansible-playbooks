@@ -1,0 +1,11 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  roles:
+    - role: npm
+
+- hosts: servers
+  become: yes
+  become_method: sudo
+  roles:
+    - role: docker

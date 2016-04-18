@@ -1,0 +1,4 @@
+# role: common
+
+- name: Install npm
+  package: name=npm state=latest
