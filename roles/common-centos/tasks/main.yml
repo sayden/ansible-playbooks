@@ -1,0 +1,33 @@
+# author: Mario Castro
+# file: roles/common-centos/tasks/main.yml
+
+- name: Install a few utility tools
+  package: name={{item}} state=present
+  with_items: 
+    - git
+    - wget
+    - tar
+
+- name: Install EPEL
+  package: name=epel-release state=present
+
+- name: Install common dependencies
+  package: name={{item}} state=present
+  with_items:
+  - python-devel
+  - java-1.8.0-openjdk-devel
+  - zlib-devel
+  - libcurl-devel
+  - openssl-devel
+  - cyrus-sasl-md5
+  - apr-devel
+  - subversion-devel
+  - apr-util-devel
+  - autoconf
+  - automake
+  - libtool
+  - patch
+  - maven
+
+- name: Update systemd
+  package: name=systemd state=latest
