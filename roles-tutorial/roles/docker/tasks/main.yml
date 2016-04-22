@@ -1,4 +1,0 @@
-# role: Docker
-
-- name: Install Docker
-  package: name=docker state=present
