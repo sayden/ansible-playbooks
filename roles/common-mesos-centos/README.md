@@ -1,0 +1,1 @@
+# Role: common-mesos-centos

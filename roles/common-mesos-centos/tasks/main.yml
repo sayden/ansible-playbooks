@@ -1,5 +1,5 @@
 # author: Mario Castro
-# file: roles/common-centos/tasks/main.yml
+# file: roles/common-mesos-centos/tasks/main.yml
 
 - name: Install a few utility tools
   package: name={{item}} state=present
